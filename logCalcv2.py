@@ -6,46 +6,49 @@ def logCount(base, number):
 	result = number // base
 	count = 0
 
-	print("\n\nlog of {} to base {}".format(number, base))
-	print("*************************")
-	print("\n{}/{} = {}".format(number, base, result))
+	print("\n\nlog of {} to base {}".format(number, base)
+			+ "\n*************************"
+			+ "\n{}/{} = {}".format(number, base, result))
 	count +=1
 
 	while result != 1:
-		result1 = result
+		resultTemp = result
 		result = result // base
-		print("{}/{} = {}".format(result1, base, result))
+		print("{}/{} = {}".format(resultTemp, base, result))
 		count +=1
 		
 		if result <= 1:
-			print("\n     Final Result: \n\nlog base ({}) of {} = \n\n\t>> {} <<".format(base, number, count))
+			print("\n     Final Result: \n\nlog base ({}) of {} = \n\n\t>> {} <<".format(base, number, count)
+			+ "\n*************************")
 			break
-	print("*************************")
 
-
-# Log Calc Prompt
-'''
-print("\n********************\nWelcome to Ray's Log Calc.\n\nThis tool can help calculate common (base 10) and binary (base 2) logarithms.\n\nCurrently fractions, negative numbers and bases outside of 2 and 10 are not supported.Apologies to the Ph.D mathematicians out there.\n********************\n")
-baseNum = int(input("Please enter a base number: "))
-logOfNum = int(input("Now enter the desired logarithm of x to base {}: ".format(baseNum)))
-logCount(baseNum, logOfNum)
-# print("you have selected: " + logCount(baseNum, logOfNum))
-# logCount()
-'''
-
+			
 # Base 2 Table for Pre-Filled Example - WIP
-'''
-i = 2
-result = 0
-while result < 8388608:
-	result = i * 2
-	i = i * 2
-	logCount(i, result)
-	print(logCount)
-	print(result)
-'''
+def baseTwoExample():
+	i = 2
+	result = 0
+	while result <= 2048:
+		result = i * 2
+		i = i * 2
+		logCount(2, result)
+
+		
+# Log Calc Prompt
+print("\n********************\nWelcome to Ray's Log Calc.\n\nThis tool can help calculate common (base 10) and binary (base 2) logarithms.\n\nCurrently fractions, negative numbers and bases outside of 2 and 10 are not supported.\n********************\n")
+
+choice = int(input("You may choose from:\n(1) an example of logarithms calculated in base 2\nor\n(2) a prompt to enter your own base and log numbers for calculation."))
+if choice == 1:
+	baseTwoExample()
+elif choice == 2:
+	baseNum = int(input("Please enter a base number: "))
+	logOfNum = int(input("Now enter the desired logarithm of x to base {}: ".format(baseNum)))
+	logCount(baseNum, logOfNum)
+else:
+	print("Please select a valid choice: 1 or 2.")
+	choice
 
 # Testing Log Calc in Base 2, 10 and 5.
+'''
 logCount(2,8)
 logCount(2, 16)
 logCount(2, 32)
@@ -59,3 +62,4 @@ logCount(2, 2048)
 logCount(10, 100)
 logCount(2, 24)
 logCount(5, 625)
+'''
